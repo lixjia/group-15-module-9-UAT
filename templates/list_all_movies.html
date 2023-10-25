@@ -1,9 +1,37 @@
-{% extends '_layout.html' %}
-
-{% block title %}Movie Rating App | All Movies{% endblock %}
-
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+</head>
+<body>
+    {% extends '_layout.html' %}
+    {% block title %}Movie Rating App | All Movies{% endblock %}
+    {% block body %}
 <h1 class="mb-5">All Movies</h1>
 <p class="mb-3">See our list of movie ratings below</p>
 <!-- TODO: Feature 1 -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope ="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Director</th>
+            <th scope="col">Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for id, movie in movie_list.items() %}
+        <tr>
+            <td> {{ id }}</td>
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.director }}</td>
+            <td>{{ movie.rating }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
+</body>
+</html>

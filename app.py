@@ -7,6 +7,10 @@ app = Flask(__name__)
 # Get the movie repository singleton to use throughout the application
 movie_repository = get_movie_repository()
 
+# Uncomment for manual creation, unecessary when feature 2 complete:
+# movie_repository.create_movie("Star Wars", "George Lucas", 4)
+# movie_repository.create_movie("Oppenheimer", "Christopher Nolan", 3)
+
 @app.get('/')
 def index():
     return render_template('index.html')
@@ -14,9 +18,6 @@ def index():
 
 @app.get('/movies')
 def list_all_movies():
-    # Uncomment for manual creation, REMOVE when feature 2 complete:
-    # movie_repo.create_movie("Star Wars", "George Lucas", 4)
-    # movie_repo.create_movie("Oppenheimer", "Christopher Nolan", 3)
     movie_list = get_movie_repository().get_all_movies()
     return render_template('list_all_movies.html', list_movies_active=True, movie_list=movie_list)
 

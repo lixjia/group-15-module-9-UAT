@@ -6,4 +6,16 @@
 <h1 class="mb-5">Search Movie Ratings</h1>
 <p class="mb-3">Search for a movie rating below</p>
 <!-- TODO: Feature 3 -->
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline" action="/movies/search" method="GET">
+      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+
+<h1>{{ movie.title }}</h1>
+<h2>{{title}} {{ movie.rating }}</h2>
+<h2>{{error}}</h2>
+
+
 {% endblock %}

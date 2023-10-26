@@ -34,8 +34,8 @@ def create_movie():
 @app.get('/movies/search')
 def search_movies():
     # TODO: Feature 3
-    get_movie_repository().create_movie("test1", "testDirector", 4)
-    get_movie_repository().create_movie("test2", "testDirector", 3)
+    # get_movie_repository().create_movie("test1", "testDirector", 4)
+    # get_movie_repository().create_movie("test2", "testDirector", 3)
     name = request.args.get('search')
     movie = get_movie_repository().get_movie_by_title(name)
     title = ''

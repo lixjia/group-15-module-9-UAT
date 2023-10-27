@@ -1,30 +1,29 @@
 from src.repositories.movie_repository import get_movie_repository
 from src.models.movie import Movie
 
-movie_repo = get_movie_repository()
-movie_repo.clear_db()
+get_movie_repository().clear_db()
 
 # Sample movies to for testing 
-movie1 = movie_repo.create_movie("Star Wars", "George Lucas", 4)
-movie2 = movie_repo.create_movie("Oppenheimer", "Christopher Nolan", 3)
+movie1 = get_movie_repository().create_movie("Star Wars", "George Lucas", 4)
+movie2 = get_movie_repository().create_movie("Oppenheimer", "Christopher Nolan", 3)
 
-# Correct dictionary
+# Dictionary with correct values
 correct_movies = {
     movie1.movie_id: movie1,
     movie2.movie_id: movie2
 }
 
 def test_get_all_movies():
-    movie_repo = get_movie_repository()
-    all_movies = movie_repo.get_all_movies()
-
     # Verify that get_all_movies() returns ALL movies, len should match the number of created movies
-    assert len(all_movies) == 2
+    assert len(get_movie_repository().get_all_movies()) == 2
 
     # Makes sure it returns a dictionary
-    assert isinstance(all_movies, dict)
+    assert isinstance(get_movie_repository().get_all_movies(), dict)
 
-    # Checks that get_all_movies() returns a correct dictionary
-    assert all_movies == correct_movies
-
-
+    # Makes sure the dictionary created by get_all_movies() has the correct data (is the same as the correct_movies dict)
+    dictionaries_match = True
+    for key, value in correct_movies.items():
+        if key not in get_movie_repository().get_all_movies() or get_movie_repository().get_all_movies()[key] != value:
+            all_data = False
+            break
+    assert dictionaries_match

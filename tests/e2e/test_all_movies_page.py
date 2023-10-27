@@ -2,13 +2,13 @@
 from flask.testing import FlaskClient
 from src.repositories.movie_repository import get_movie_repository
 from src.models.movie import Movie
+from app import app
 
-movie_repo = get_movie_repository()
-movie_repo.clear_db()
+get_movie_repository().clear_db()
 
 # Sample movies for testing 
-movie1 = movie_repo.create_movie("Star Wars", "George Lucas", 4)
-movie2 = movie_repo.create_movie("Oppenheimer", "Christopher Nolan", 3)
+get_movie_repository().create_movie("Star Wars", "George Lucas", 4)
+get_movie_repository().create_movie("Oppenheimer", "Christopher Nolan", 3)
 
 def test_list_all_movies(test_app: FlaskClient):
     response = test_app.get('/movies')
@@ -31,4 +31,3 @@ def test_list_all_movies(test_app: FlaskClient):
     assert 'Oppenheimer' in response_data
     assert 'Christopher Nolan' in response_data
     assert '3' in response_data
-

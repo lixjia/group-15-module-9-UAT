@@ -2,6 +2,7 @@
 from flask.testing import FlaskClient
 from src.repositories.movie_repository import get_movie_repository
 from src.models.movie import Movie
+from app import app
 
 get_movie_repository().clear_db()
 

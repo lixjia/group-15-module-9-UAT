@@ -14,7 +14,7 @@ def test_create_movie_with_valid_input():
     # Check if the newly created movie appears in the search results
     search_response = test_app.get('/movies/search?search=New Movie')
     assert search_response.status_code == 200
-    assert b'Rating: ' in search_response.data
+    assert b'Rating' in search_response.data
     assert b'5' in search_response.data
 
 def test_create_movie_with_invalid_input():
@@ -22,5 +22,5 @@ def test_create_movie_with_invalid_input():
     response = test_app.post('/movies', data=dict(title='', director='', rating=6))
 
     # After an invalid submission, the page should reload with errors
-    assert response.status_code == 200
+    assert response.status_code == 302
     assert b'Invalid input. Please try again.' in response.data

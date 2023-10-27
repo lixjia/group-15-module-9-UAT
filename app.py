@@ -3,8 +3,6 @@ from flask import Flask, redirect, render_template
 from src.repositories.movie_repository import get_movie_repository
 
 from flask import Flask, redirect, render_template, request
-from src.repositories.movie_repository import get_movie_repository
-from src.models.movie import Movie
 from random import randint
 
 app = Flask(__name__)

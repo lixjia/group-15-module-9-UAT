@@ -11,4 +11,4 @@ def test_get_single_movie():
 	# Simulate a GET request
 	response = test_app.get('movies/search')
 	# Check if the HTTP status code is 200, 'aka' sucessful
-	assert response.status == 200 
+	assert response.status == '200 OK'

@@ -1,14 +1,13 @@
 # TODO: Feature 1
 from flask.testing import FlaskClient
 from src.repositories.movie_repository import get_movie_repository
-from src.models.movie import Movie
 from app import app
 
 get_movie_repository().clear_db()
 
 # Sample movies for testing 
-get_movie_repository().create_movie("Star Wars", "George Lucas", 4)
-get_movie_repository().create_movie("Oppenheimer", "Christopher Nolan", 3)
+get_movie_repository().create_movie("test1", "testDirector7", 4)
+get_movie_repository().create_movie("test2", "testDirector9", 3)
 
 def test_list_all_movies(test_app: FlaskClient):
     response = test_app.get('/movies')
@@ -24,10 +23,10 @@ def test_list_all_movies(test_app: FlaskClient):
     assert '<th scope="col">Director</th>' in response_data
     assert '<th scope="col">Rating</th>' in response_data
 
-    assert 'Star Wars' in response_data
-    assert 'George Lucas' in response_data
+    # Makes sure correct test movie data is in table
+    assert 'test1' in response_data
+    assert 'testDirector7' in response_data
     assert '4' in response_data
-
-    assert 'Oppenheimer' in response_data
-    assert 'Christopher Nolan' in response_data
+    assert 'test2' in response_data
+    assert 'testDirector9' in response_data
     assert '3' in response_data

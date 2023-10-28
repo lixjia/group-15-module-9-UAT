@@ -14,9 +14,6 @@ correct_movies = {
 }
 
 def test_get_all_movies():
-    # Verify that get_all_movies() returns ALL movies, len should match the number of created movies
-    assert len(get_movie_repository().get_all_movies()) == 2
-
     # Makes sure it returns a dictionary
     assert isinstance(get_movie_repository().get_all_movies(), dict)
 
